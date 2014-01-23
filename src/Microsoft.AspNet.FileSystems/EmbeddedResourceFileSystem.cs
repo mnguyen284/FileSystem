@@ -1,5 +1,4 @@
-﻿#if NET45
-// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
+﻿// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
@@ -18,6 +17,7 @@ namespace Microsoft.Owin.FileSystems
         private readonly string _baseNamespace;
         private readonly DateTime _lastModified;
 
+#if NET45 // CORECLR_TODO: Assembly.GetCallingAssembly()
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddedResourceFileSystem" /> class using the calling
         /// assembly and empty base namespace.
@@ -26,7 +26,7 @@ namespace Microsoft.Owin.FileSystems
             : this(Assembly.GetCallingAssembly())
         {
         }
-
+#endif
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddedResourceFileSystem" /> class using the specified
         /// assembly and empty base namespace.
@@ -37,6 +37,7 @@ namespace Microsoft.Owin.FileSystems
         {
         }
 
+#if NET45 // CORECLR_TODO: Assembly.GetCallingAssembly()
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddedResourceFileSystem" /> class using the calling
         /// assembly and specified base namespace.
@@ -46,7 +47,7 @@ namespace Microsoft.Owin.FileSystems
             : this(Assembly.GetCallingAssembly(), baseNamespace)
         {
         }
-
+#endif
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddedResourceFileSystem" /> class using the specified
         /// assembly and base namespace.
@@ -191,4 +192,3 @@ namespace Microsoft.Owin.FileSystems
         }
     }
 }
-#endif
